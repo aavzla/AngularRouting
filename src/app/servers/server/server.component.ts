@@ -9,7 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./server.component.css']
 })
 export class ServerComponent implements OnInit {
-  server: {id: number, name: string, status: string};
+  server: { id: number, name: string, status: string };
 
   constructor(
     private serversService: ServersService,
@@ -32,7 +32,10 @@ export class ServerComponent implements OnInit {
       //This is an absolute routing
       //['/servers', this.server.id, 'edit']
       //This is a relative routing
-      ['edit'], { relativeTo: this.route }
+      ['edit'], {
+        relativeTo: this.route,
+        queryParamsHandling: 'preserve'
+      }
     );
   }
 }
