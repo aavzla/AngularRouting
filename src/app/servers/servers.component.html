@@ -22,7 +22,8 @@
       </a>
     </div>
   </div>
-  <div class="col-xs-12 col-sm-4">
+  <!--The div below is not displayed because we use child routing in his place, but i wanted to leave this for trace purposes-->
+  <div class="col-xs-12 col-sm-4" style="display:none;">
     <!--This was a link to test absolute and relative path with routing. I leave it here to trace and play if i need it to-->
     <!--<a routerLink="../servers">Reload Page</a>-->
     <!--This was a button to test relative path with routing. I leave it here to trace and play if i need it to-->
@@ -31,6 +32,9 @@
     <hr>
     <!--This is commented for now to avoid getting the errors, because we haven't configured the routing for nested components.-->
     <!--<app-server></app-server>-->
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <router-outlet></router-outlet>
   </div>
 </div>
 
