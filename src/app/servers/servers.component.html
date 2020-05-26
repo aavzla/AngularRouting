@@ -1,7 +1,18 @@
 <div class="row">
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
-      <a [routerLink]="['/servers', 5, 'edit']"
+      <!--This link will get the edit of the server-->
+      <!--<a [routerLink]="['/servers', server.id, 'edit']"
+         [queryParams]="{ allowEdit: '1' }"
+         fragment="loading"
+         href="#"
+         class="list-group-item"
+         *ngFor="let server of servers">
+        {{ server.name }}
+      </a>-->
+      <!--The purpose of this link was to load a single server, not edit the server-->
+      <!--This will break because the path sent does not match any route configured-->
+      <a [routerLink]="['/servers', server.id]"
          [queryParams]="{ allowEdit: '1' }"
          fragment="loading"
          href="#"
@@ -18,7 +29,8 @@
     <button (click)="onReload()" class="btn btn-primary">Reload Page</button>
     <app-edit-server></app-edit-server>
     <hr>
-    <app-server></app-server>
+    <!--This is commented for now to avoid getting the errors, because we haven't configured the routing for nested components.-->
+    <!--<app-server></app-server>-->
   </div>
 </div>
 
