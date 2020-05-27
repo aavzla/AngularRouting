@@ -36,7 +36,22 @@ const appRoutes: Routes = [
    *
    * Here we use wildcard ** to express anything typed in the URL (Alphanumeric, special chars, etc.)
    */
-  { path: '**', redirectTo: '/not-found' }
+  { path: '**', redirectTo: '/not-found' },
+
+  /*
+   * See bellow, these are the cases to test redirection.
+   * If we comment the first path(with the path ''), try to use any of the redirections bellow(one at a time).
+  */
+
+  /*
+   * This is the case without the pathMatch option, this will throw the following error:
+   * Error: Invalid configuration of route '{path: "", redirectTo: "/not-found"}':please provide 'pathMatch'.
+   * The default value of 'pathMatch' is 'prefix', but often the intent is to use 'full'.
+  */
+  //{ path: '', redirectTo: '/not-found' }
+
+  //This is the case with pathMatch option, please visit https://angular.io/api/router/Route#pathMatch.
+  //{ path: '', redirectTo: '/not-found', pathMatch: 'full' }
 ];
 
 @NgModule({
