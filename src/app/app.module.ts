@@ -12,6 +12,7 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,16 @@ const appRoutes: Routes = [
       { path: ':id/edit', component: EditServerComponent }
     ]
   },
+  //This is the component for non existing routes found. (404 error)
+  { path: 'not-found', component: PageNotFoundComponent },
+  /*
+   * This must be always the last route in the configurations of the routes,
+   * because all configuration routes are registred from top to bottom and
+   * for example if this is at the beggining, all routes will be redirected.
+   *
+   * Here we use wildcard ** to express anything typed in the URL (Alphanumeric, special chars, etc.)
+   */
+  { path: '**', redirectTo: '/not-found' }
 ];
 
 @NgModule({
@@ -36,7 +47,8 @@ const appRoutes: Routes = [
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
