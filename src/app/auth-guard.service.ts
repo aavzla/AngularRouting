@@ -2,14 +2,15 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  Router
+  Router,
+  CanActivateChild
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { AuthService } from "./auth.service";
 
 @Injectable()
-export class AuthGardService implements CanActivate {
+export class AuthGardService implements CanActivate, CanActivateChild {
 
   constructor(
     private authService: AuthService,
@@ -40,5 +41,14 @@ export class AuthGardService implements CanActivate {
           }
         }
       );
+  }
+
+  canActivateChild(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | Promise<boolean> | boolean {
+    //Here we call canActivate, because it is still the same logic needed.
+    //We need to send the route and status, because it is mandatory for the method.
+    return this.canActivate(route, state);
   }
 }

@@ -19,7 +19,9 @@ const appRoutes: Routes = [
   {
     path: 'servers',
     //Here the canACtivate is applied to the servers route level, so every child will have the same behavior.
-    canActivate: [AuthGardService],
+    //canActivate: [AuthGardService],
+    //Here the canACtivateChild is applied to the servers childs levels only. The path to /servers will be allowed.
+    canActivateChild: [AuthGardService],
     component: ServersComponent,
     children: [
       { path: ':id', component: ServerComponent },
