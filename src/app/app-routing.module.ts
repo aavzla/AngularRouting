@@ -34,7 +34,11 @@ const appRoutes: Routes = [
     ]
   },
   //This is the component for non existing routes found. (404 error)
-  { path: 'not-found', component: PageNotFoundComponent },
+  {
+    path: 'not-found',
+    component: PageNotFoundComponent,
+    data: { message: 'This page was not found!'}
+  },
   /*
    * This must be always the last route in the configurations of the routes,
    * because all configuration routes are registred from top to bottom and
