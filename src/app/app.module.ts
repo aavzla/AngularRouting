@@ -15,6 +15,7 @@ import { ServersService } from './servers/servers.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthService } from './auth.service';
 import { AuthGardService } from './auth-guard.service';
+import { CanDeactivateGuard } from './servers/edit-server/can-deactivate-guard.service';
 
 //The const appRoutes was transfered to the app-routing module and i made this comment to have trace history.
 
@@ -34,7 +35,12 @@ import { AuthGardService } from './auth-guard.service';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ServersService, AuthService, AuthGardService],
+  providers: [
+    ServersService,
+    AuthService,
+    AuthGardService,
+    CanDeactivateGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
