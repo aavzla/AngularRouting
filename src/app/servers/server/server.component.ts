@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ServersService } from '../servers.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+//import { ServersService } from '../servers.service';
+import {
+  ActivatedRoute,
+  //Params,
+  Router,
+  Data
+} from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -12,12 +17,20 @@ export class ServerComponent implements OnInit {
   server: { id: number, name: string, status: string };
 
   constructor(
-    private serversService: ServersService,
+    //private serversService: ServersService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit() {
+    this.route.data.subscribe(
+      (data: Data) => {
+        //The server in data['server'] should be the key that was configured in the routing of the module.
+        //The key could be named as we wanted.
+        this.server = data['server'];
+      }
+    );
+    /*
     const serverId: number = +this.route.snapshot.queryParams['id'];
     this.server = this.serversService.getServer(serverId);
     this.route.params.subscribe(
@@ -25,6 +38,7 @@ export class ServerComponent implements OnInit {
         this.server = this.serversService.getServer(+params['id']);
       }
     );
+    */
   }
 
   onEdit() {
