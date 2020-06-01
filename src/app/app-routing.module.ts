@@ -72,6 +72,16 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(appRoutes)
+
+    /*
+     * In deployments to a real server, the route of the application will be handled first by the server, then by the app.
+     * So, for any errors found by the server, like 404, we need to set up the error handling to return the index.html file of our app.
+     * This, will allow that the app will handle the errors and not the server hosting.
+     * This is the case, we can't set up this or we need to support old browsers that doesn't know how to handle routing.
+     * This config will add a # after the root of our app, therefore the hosting server will resolve only the root of our app and discard the rest of the URL.
+     * Then the app will get the full URL and will continue to resolve the route.
+    */
+    //RouterModule.forRoot(appRoutes, { useHash: true })
   ],
   exports: [RouterModule]
 })
